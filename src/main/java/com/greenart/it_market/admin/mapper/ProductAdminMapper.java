@@ -28,4 +28,7 @@ public interface ProductAdminMapper {
     public void insertProductDetailMOUSEInfo(Map<String, Object> data);
     public void insertProductDetailSPKInfo(Map<String, Object> data);
     public void insertProductImages(List<ProductImageVO> imgList);
+
+    public List<String> selectProductImageFileNames(Integer product_seq);
+    public void deleteProductInfo(Integer product_seq);
 }

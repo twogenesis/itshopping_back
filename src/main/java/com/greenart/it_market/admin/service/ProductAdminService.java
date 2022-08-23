@@ -39,7 +39,6 @@ public class ProductAdminService {
     @Transactional
     public ResponseEntity<Map<String, Object>> insertProductInfo(ProductInsertVO insVO) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
-        
         switch(insVO.getProd().getPi_type()) {
             case 1:
                 mapper.insertProductDetailCPUInfo(insVO.getData());
@@ -93,5 +92,9 @@ public class ProductAdminService {
         resultMap.put("status", "true");
         resultMap.put("message", "제품 정보가 추가되었습니다.");
         return new ResponseEntity<Map<String, Object>>(resultMap, HttpStatus.ACCEPTED);
+    }
+    public ResponseEntity<Map<String, Object>> deleteProductInfo(Integer product_seq) {
+        
+        return null;
     }
 }

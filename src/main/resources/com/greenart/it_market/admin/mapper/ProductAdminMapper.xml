@@ -147,4 +147,11 @@
             (#{img.prod_img_pi_seq}, #{img.prod_img_order}, #{img.prod_img_file}, #{img.prod_img_thumbnail})
         </foreach>
     </insert>
+
+    <select id="selectProductImageFileNames" resultType="java.lang.String">
+        select prod_img_file from product_image where prod_img_pi_seq = #{product_seq}
+    </select>
+    <delete id="deleteProductInfo">
+        delete from product_info where pi_seq = #{prod_seq}
+    </delete>
 </mapper>
