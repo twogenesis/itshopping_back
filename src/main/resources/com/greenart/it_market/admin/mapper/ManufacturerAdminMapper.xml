@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenart.it_market.admin.mapper.ManufacturerAdminMapper">
+    <select id="selectManufacturerInfo" resultType="com.greenart.it_market.admin.data.manufacturer.ManufacturerInfoVO">
+        select * from manufacturer_info where manufacturer_name like '%${keyword}%'
+        limit 10 offset ${(page-1)*10}
+    </select>
+    <select id="selectManufacturerCount" resultType="java.lang.Integer">
+        select count(*) from manufacturer_info where manufacturer_name like '%${keyword}%'
+    </select>
+    <select id="selectManufacturerPageCount" resultType="java.lang.Integer">
+        select ceil(count(*)/10) from manufacturer_info where manufacturer_name like '%${keyword}%'
+    </select>
+    <insert id="insertManufacturerInfo">
+        insert into manufacturer_info(manufacturer_name) values (#{manufacturer_name})
+    </insert>
+    <delete id="deleteManufacturerInfo">
+        delete from manufacturer_info where manufacturer_seq = #{manuSeq}
+    </delete>
+</mapper>

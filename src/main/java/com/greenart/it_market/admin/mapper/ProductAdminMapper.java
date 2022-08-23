@@ -5,16 +5,16 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.greenart.it_market.admin.data.DataRequestVO;
 import com.greenart.it_market.admin.data.product.ProductImageVO;
 import com.greenart.it_market.admin.data.product.ProductInfoVO;
-import com.greenart.it_market.admin.data.product.ProductRequestVO;
 import com.greenart.it_market.admin.data.product.ProductSummaryVO;
 
 @Mapper
 public interface ProductAdminMapper {
-    public List<ProductSummaryVO> selectProductSummaryList(ProductRequestVO reqVO);
-    public Integer selectTotalCnt(ProductRequestVO reqVO);
-    public Integer selectTotalPage(ProductRequestVO reqVO);
+    public List<ProductSummaryVO> selectProductSummaryList(DataRequestVO reqVO);
+    public Integer selectTotalCnt(DataRequestVO reqVO);
+    public Integer selectTotalPage(DataRequestVO reqVO);
 
     public void insertProductInfo(ProductInfoVO prod);
     public void insertProductDetailCPUInfo(Map<String, Object> data);

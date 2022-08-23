@@ -116,29 +116,117 @@
         )
 
     </insert>
-    <insert id="insertProductDetailMBInfo">
-
+    <insert id="insertProductDetailMBInfo" useGeneratedKeys="true" parameterType="java.util.Map" keyProperty="detail_mb_seq">
+        INSERT INTO detail_mb(
+            detail_mb_socket, detail_mb_dram_type, detail_mb_dram_spd, detail_mb_dram_slots, detail_mb_form, 
+            detail_mb_vertical, detail_mb_horz, detail_mb_pwr_phase, detail_mb_hdmi, detail_mb_dvi, 
+            detail_mb_dsub, detail_mb_dp, detail_mb_wifi, detail_mb_rj45, detail_mb_pci_ver, detail_mb_pci, 
+            detail_mb_m2, detail_mb_m2_type, detail_mb_m2_size, detail_mb_sata_cnt, detail_mb_usb20, detail_mb_usb30, 
+            detail_mb_usb31, detail_mb_usb32, detail_mb_usbc, detail_mb_thunderbolt3, detail_mb_thunderbolt4, detail_mb_thunderbolt5
+        )
+        VALUES(
+            #{detail_mb_socket}, #{detail_mb_dram_type}, #{detail_mb_dram_spd}, #{detail_mb_dram_slots}, #{detail_mb_form}, #{detail_mb_vertical},
+            #{detail_mb_horz}, #{detail_mb_pwr_phase}, #{detail_mb_hdmi}, #{detail_mb_dvi}, #{detail_mb_dsub}, #{detail_mb_dp}, #{detail_mb_wifi},
+            #{detail_mb_rj45}, #{detail_mb_pci_ver}, #{detail_mb_pci}, #{detail_mb_m2}, #{detail_mb_m2_type}, #{detail_mb_m2_size}, #{detail_mb_sata_cnt},
+            #{detail_mb_usb20}, #{detail_mb_usb30}, #{detail_mb_usb31}, #{detail_mb_usb32}, #{detail_mb_usbc}, #{detail_mb_thunderbolt3},
+            #{detail_mb_thunderbolt4}, #{detail_mb_thunderbolt5}
+        )
     </insert>
-    <insert id="insertProductDetailSSDInfo">
-
+    <insert id="insertProductDetailSSDInfo" useGeneratedKeys="true" parameterType="java.util.Map" keyProperty="detail_ssd_seq">
+        INSERT INTO detail_ssd
+        (
+            detail_ssd_interface, detail_ssd_iops, detail_ssd_read_spd, detail_ssd_write_spd,
+            detail_ssd_volume_size, detail_ssd_dram_size, detail_ssd_density
+        )
+        VALUES(
+            #{detail_ssd_interface},
+            #{detail_ssd_iops},
+            #{detail_ssd_read_spd},
+            #{detail_ssd_write_spd},
+            #{detail_ssd_volume_size},
+            #{detail_ssd_dram_size},
+            #{detail_ssd_density}
+        )
     </insert>
-    <insert id="insertProductDetailHDDInfo">
-
+    <insert id="insertProductDetailHDDInfo" useGeneratedKeys="true" parameterType="java.util.Map" keyProperty="detail_hdd_seq">
+        INSERT INTO detail_hdd(
+            detail_hdd_volume_size, detail_hdd_buffer_size, detail_hdd_rpm,
+            detail_hdd_read_spd, detail_hdd_write_spd
+        )
+        VALUES(
+            #{detail_hdd_volume_size},
+            #{detail_hdd_buffer_size},
+            #{detail_hdd_rpm},
+            #{detail_hdd_read_spd},
+            #{detail_hdd_write_spd}
+        )
     </insert>
-    <insert id="insertProductDetailPWRInfo">
-
+    <insert id="insertProductDetailPWRInfo" useGeneratedKeys="true" parameterType="java.util.Map" keyProperty="detail_pwr_seq">
+        INSERT INTO detail_pwr
+        (
+            detail_pwr_rated, detail_pwr_cert_rate, detail_pwr_cable_type, detail_pwr_type
+        )
+        VALUES(
+            #{detail_pwr_rated},
+            #{detail_pwr_cert_rate},
+            #{detail_pwr_cable_type},
+            #{detail_pwr_type}
+        )
     </insert>
-    <insert id="insertProductDetailCASEInfo">
-
+    <insert id="insertProductDetailCASEInfo" useGeneratedKeys="true" parameterType="java.util.Map" keyProperty="detail_case_seq">
+        INSERT INTO detail_case(
+            detail_case_type, detail_case_board_type, detail_case_power_type, detail_case_horz, detail_case_vertical, detail_case_height, detail_case_usb20, detail_case_usb30, detail_case_usb31, detail_case_usb32, detail_case_usbc, detail_case_mic, detail_case_spk
+        )
+        VALUES(
+            #{detail_case_type},
+            #{detail_case_board_type},
+            #{detail_case_power_type},
+            #{detail_case_horz},
+            #{detail_case_vertical},
+            #{detail_case_height},
+            #{detail_case_usb20},
+            #{detail_case_usb30},
+            #{detail_case_usb31},
+            #{detail_case_usb32},
+            #{detail_case_usbc},
+            #{detail_case_mic},
+            #{detail_case_spk}
+        )
     </insert>
-    <insert id="insertProductDetailKBDInfo">
-
+    <insert id="insertProductDetailKBDInfo" useGeneratedKeys="true" parameterType="java.util.Map" keyProperty="detail_kbd_seq">
+        INSERT INTO detail_kbd(
+            detail_kbd_contact_type, detail_kbd_conn_type, detail_kbd_shape, detail_kbd_backlight, detail_kbd_interface, detail_kbd_key_cnt
+        )
+        VALUES(
+            #{detail_kbd_contact_type},
+            #{detail_kbd_conn_type},
+            #{detail_kbd_shape},
+            #{detail_kbd_backlight},
+            #{detail_kbd_interface},
+            #{detail_kbd_key_cnt}
+        )
     </insert>
-    <insert id="insertProductDetailMOUSEInfo">
-
+    <insert id="insertProductDetailMOUSEInfo" useGeneratedKeys="true" parameterType="java.util.Map" keyProperty="detail_mouse_seq">
+        INSERT INTO detail_mouse(
+            detail_mouse_sensor, detail_mouse_conn_type, detail_mouse_dpi, detail_mouse_interface, detail_mouse_btns
+        )
+        VALUES(
+            #{detail_mouse_sensor},
+            #{detail_mouse_conn_type},
+            #{detail_mouse_dpi},
+            #{detail_mouse_interface},
+            #{detail_mouse_btns}
+        )
     </insert>
-    <insert id="insertProductDetailSPKInfo">
-
+    <insert id="insertProductDetailSPKInfo" useGeneratedKeys="true" parameterType="java.util.Map" keyProperty="detail_spk_seq">
+        INSERT INTO detail_spk(
+            detail_spk_channel, detail_spk_bluetooth, detail_spk_output
+        )
+        VALUES(
+            #{detail_spk_channel},
+            #{detail_spk_bluetooth},
+            #{detail_spk_output}
+        )
     </insert>
     <insert id="insertProductImages">
         insert into product_image (prod_img_pi_seq, prod_img_order, prod_img_file, prod_img_thumbnail)

@@ -1,6 +1,5 @@
 package com.greenart.it_market.admin.api;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.greenart.it_market.admin.data.DataRequestVO;
 import com.greenart.it_market.admin.data.product.ProductInsertVO;
-import com.greenart.it_market.admin.data.product.ProductRequestVO;
 import com.greenart.it_market.admin.service.ProductAdminService;
 
 @RestController
@@ -22,7 +21,7 @@ import com.greenart.it_market.admin.service.ProductAdminService;
 public class ProductAdminController {
     @Autowired ProductAdminService service;
     @PostMapping("/list")
-    public ResponseEntity<Map<String, Object>> getProductList(@RequestBody @Nullable ProductRequestVO reqVO) {
+    public ResponseEntity<Map<String, Object>> getProductList(@RequestBody @Nullable DataRequestVO reqVO) {
         return service.getProductList(reqVO);
     }
     @PostMapping("/add")
