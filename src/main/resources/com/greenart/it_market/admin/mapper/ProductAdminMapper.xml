@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenart.it_market.admin.mapper.ProductAdminMapper">
+    <select id="selectProductSummaryList" resultType="com.greenart.it_market.admin.data.product.ProductSummaryVO">
+        select * from summary_info_view
+        where name like '%${keyword}%'
+        <if test="type != null">
+            and p_type = #{type}
+        </if>
+        <if test="order == 0">
+            order by release_dt desc
+        </if>
+        <if test="order == 1">
+            order by release_dt asc
+        </if>
+        limit 10 offset ${(page-1)*10}
+    </select>
+    <select id="selectTotalCnt" resultType="java.lang.Integer">
+        select count(*) from summary_info_view
+        where name like '%${keyword}%'
+        <if test="type != null">
+            and p_type = #{type}
+        </if>
+    </select>
+    <select id="selectTotalPage" resultType="java.lang.Integer">
+        select ceil(count(*)/10) from summary_info_view
+        where name like '%${keyword}%'
+        <if test="type != null">
+            and p_type = #{type}
+        </if>
+    </select>
+
+    <insert id="insertProductInfo" useGeneratedKeys="true" parameterType="com.greenart.it_market.admin.data.product.ProductInfoVO" keyProperty="pi_seq">
+        insert into product_info(
+            pi_manufacturer_seq,pi_name,pi_price,pi_release_dt,pi_detail_cpu,
+            pi_detail_gpu,pi_detail_mb,pi_detail_ssd,pi_detail_hdd,
+            pi_detail_pwr,pi_detail_case,pi_detail_kbd,
+            pi_detail_mouse,pi_detail_spk,pi_type
+        )
+        values
+        (
+            #{pi_manufacturer_seq},#{pi_name},#{pi_price},#{pi_release_dt},#{pi_detail_cpu},
+            #{pi_detail_gpu},#{pi_detail_mb},#{pi_detail_ssd},#{pi_detail_hdd},
+            #{pi_detail_pwr},#{pi_detail_case},#{pi_detail_kbd},
+            #{pi_detail_mouse},#{pi_detail_spk},#{pi_type}
+        )
+    </insert>
+    <insert id="insertProductDetailCPUInfo" useGeneratedKeys="true" parameterType="java.util.Map" keyProperty="detail_cpu_seq">
+        insert into detail_cpu(
+            detail_cpu_codename,
+            detail_cpu_socket,
+            detail_cpu_core,
+            detail_cpu_thread,
+            detail_cpu_l1_cache,
+            detail_cpu_l2_cache,
+            detail_cpu_l3_cache,
+            detail_cpu_ram_type,
+            detail_cpu_ram_clock,
+            detail_cpu_base_clock,
+            detail_cpu_boost_clock,
+            detail_cpu_tdp
+        )
+        values (
+            #{detail_cpu_codename},
+            #{detail_cpu_socket},
+            #{detail_cpu_core},
+            #{detail_cpu_thread},
+            #{detail_cpu_l1_cache},
+            #{detail_cpu_l2_cache},
+            #{detail_cpu_l3_cache},
+            #{detail_cpu_ram_type},
+            #{detail_cpu_ram_clock},
+            #{detail_cpu_base_clock},
+            #{detail_cpu_boost_clock},
+            #{detail_cpu_tdp}
+        )
+    </insert>
+    <insert id="insertProductDetailGPUInfo" useGeneratedKeys="true" parameterType="java.util.Map" keyProperty="detail_gpu_seq">
+        INSERT INTO detail_gpu
+        (   
+            detail_gpu_chipset,
+            detail_gpu_core,
+            detail_gpu_vram_type,
+            detail_gpu_vram_clock,
+            detail_gpu_vram_size,
+            detail_gpu_base_clock,
+            detail_gpu_boost_clock,
+            detail_gpu_multi_gpu,
+            detail_gpu_pwr_type,
+            detail_gpu_watts,
+            detail_gpu_pwr_watts,
+            detail_gpu_interface,
+            detail_gpu_horz,
+            detail_gpu_vert,
+            detail_gpu_height,
+            detail_gpu_slots
+        )
+        VALUES(   
+            #{detail_gpu_chipset},
+            #{detail_gpu_core},
+            #{detail_gpu_vram_type},
+            #{detail_gpu_vram_clock},
+            #{detail_gpu_vram_size},
+            #{detail_gpu_base_clock},
+            #{detail_gpu_boost_clock},
+            #{detail_gpu_multi_gpu},
+            #{detail_gpu_pwr_type},
+            #{detail_gpu_watts},
+            #{detail_gpu_pwr_watts},
+            #{detail_gpu_interface},
+            #{detail_gpu_horz},
+            #{detail_gpu_vert},
+            #{detail_gpu_height},
+            #{detail_gpu_slots}
+        )
+
+    </insert>
+    <insert id="insertProductDetailMBInfo">
+
+    </insert>
+    <insert id="insertProductDetailSSDInfo">
+
+    </insert>
+    <insert id="insertProductDetailHDDInfo">
+
+    </insert>
+    <insert id="insertProductDetailPWRInfo">
+
+    </insert>
+    <insert id="insertProductDetailCASEInfo">
+
+    </insert>
+    <insert id="insertProductDetailKBDInfo">
+
+    </insert>
+    <insert id="insertProductDetailMOUSEInfo">
+
+    </insert>
+    <insert id="insertProductDetailSPKInfo">
+
+    </insert>
+    <insert id="insertProductImages">
+        insert into product_image (prod_img_pi_seq, prod_img_order, prod_img_file, prod_img_thumbnail)
+        values 
+        <foreach collection="imgList" item="img" separator=",">
+            (#{img.prod_img_pi_seq}, #{img.prod_img_order}, #{img.prod_img_file}, #{img.prod_img_thumbnail})
+        </foreach>
+    </insert>
+</mapper>
