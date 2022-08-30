@@ -10,4 +10,5 @@ public class ProductInsertVO {
     private ProductInfoVO prod;
     private Map<String, Object> data;
     private List<ProductImageVO> img_list;
+    private List<ProductDescriptionVO> desc_list;
 }

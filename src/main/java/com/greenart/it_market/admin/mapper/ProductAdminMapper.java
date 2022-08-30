@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.greenart.it_market.admin.data.DataRequestVO;
+import com.greenart.it_market.admin.data.product.ProductDescriptionVO;
 import com.greenart.it_market.admin.data.product.ProductImageVO;
 import com.greenart.it_market.admin.data.product.ProductInfoVO;
 import com.greenart.it_market.admin.data.product.ProductSummaryVO;
@@ -31,4 +32,5 @@ public interface ProductAdminMapper {
 
     public List<String> selectProductImageFileNames(Integer product_seq);
     public void deleteProductInfo(Integer product_seq);
+    public void insertProductDescriptions(List<ProductDescriptionVO> list);
 }

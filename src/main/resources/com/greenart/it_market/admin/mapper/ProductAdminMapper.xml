@@ -242,4 +242,11 @@
     <delete id="deleteProductInfo">
         delete from product_info where pi_seq = #{prod_seq}
     </delete>
+    <insert id="insertProductDescriptions">
+        insert into product_description(pd_order, pd_content, pd_type, pd_pi_seq)
+        values
+        <foreach collection="list" item="desc" separator=",">
+            (#{desc.pd_order}, #{desc.pd_content}, #{desc.pd_type}, #{desc.pd_pi_seq})
+        </foreach>
+    </insert>
 </mapper>
